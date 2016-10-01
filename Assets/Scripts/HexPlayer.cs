@@ -10,6 +10,7 @@ public class HexPlayer : MonoBehaviour
     public Animator Animator;
 
     public float SuperLength = 5;
+    public int Score = 0;
 
     void Start()
     {

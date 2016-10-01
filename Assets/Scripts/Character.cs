@@ -4,33 +4,18 @@ using Gamelogic.Grids2;
 using Gamelogic.Grids2.Graph;
 using GridPoint2 = Gamelogic.Grids2.GridPoint2;
 
-public class Character : MonoBehaviour
+public class Character : SnapToGridOnStart
 {
     public GridPoint2 CurrentGridPosition { get; set; }
     public GridPoint2 NextGridPosition { get; set; }
     public GridPoint2 CurrentAttemptedDirection { get; set; }
     public float Speed = 1;
 
-    private HexGrid grid;
-    private Transform trans;
-
-    void Start()
+    protected override void Start()
     {
-        grid = FindObjectOfType<HexGrid>();
-        trans = transform;
+        base.Start();
         CurrentGridPosition = FindCurrentGridPosition();
         NextGridPosition = CurrentGridPosition;
-        SnapToCurrentGridPosition();
-    }
-
-    public void SnapToCurrentGridPosition()
-    {
-        trans.position = grid.GridMap.GridToWorld(CurrentGridPosition);
-    }
-
-    private GridPoint2 FindCurrentGridPosition()
-    {
-        return grid.GridMap.WorldToGridToDiscrete(trans.position);
     }
 
     void Update()
@@ -60,7 +45,7 @@ public class Character : MonoBehaviour
             dir = dir.normalized;
             var angleRad = Mathf.Atan2(dir.y, dir.x);
             var angle = angleRad * Mathf.Rad2Deg;
-            trans.eulerAngles = new Vector3(trans.eulerAngles.x, trans.eulerAngles.y, angle);
+            Trans.eulerAngles = new Vector3(Trans.eulerAngles.x, Trans.eulerAngles.y, angle);
         }
     }
 
@@ -69,10 +54,6 @@ public class Character : MonoBehaviour
         var nextGridPosition = CurrentGridPosition.Add(CurrentAttemptedDirection);
         if (CheckValidMovePos(nextGridPosition))
         {
-            if (NextGridPosition != CurrentGridPosition)
-            {
-                Debug.Log(string.Format("Current: {0}, Next: {1}", CurrentGridPosition, NextGridPosition));
-            }
             NextGridPosition = nextGridPosition;
         }
     }
@@ -81,11 +62,11 @@ public class Character : MonoBehaviour
     {
         if (NotTooClose(dir))
         {
-            trans.position += dir.normalized * Speed * Time.deltaTime;
+            Trans.position += dir.normalized * Speed * Time.deltaTime;
         }
         else
         {
-            SnapToCurrentGridPosition();
+            SnapToGridPosition(CurrentGridPosition);
         }
     }
 
@@ -96,17 +77,17 @@ public class Character : MonoBehaviour
 
     private Vector2 GetNextMovementDirection(Vector3 nextWorldPos)
     {
-        return (Vector2)(nextWorldPos - trans.position);
+        return (Vector2)(nextWorldPos - Trans.position);
     }
 
     private Vector3 FindNextWorldPosition()
     {
-        return grid.GridMap.GridToWorld(NextGridPosition);
+        return Grid.GridMap.GridToWorld(NextGridPosition);
     }
 
     private bool GridPositionIsOpen(GridPoint2 nextGridPosition)
     {
-        return grid.Grid[nextGridPosition] == null;
+        return Grid.Grid[nextGridPosition] == null;
     }
 
     public void MoveNorthEast()
