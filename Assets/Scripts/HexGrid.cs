@@ -7,14 +7,11 @@ using TileCell = Gamelogic.Grids2.TileCell;
 
 public class HexGrid : GridBehaviour<GridPoint2, TileCell>
 {
-    private static readonly GridPoint2 West = new GridPoint2(-1, 0);
-    private static readonly GridPoint2 East = new GridPoint2( 1, 0);
-
     public static readonly GridPoint2 North = new GridPoint2(0, 1);
-    public static readonly GridPoint2 NorthEast = East + North;
-    public static readonly GridPoint2 NorthWest = West + North;
-
+    public static readonly GridPoint2 NorthEast = new GridPoint2(1, 0);
+    public static readonly GridPoint2 NorthWest = new GridPoint2(-1, 1);
+    
     public static readonly GridPoint2 South = new GridPoint2(0, -1);
-    public static readonly GridPoint2 SouthEast = East + South;
-    public static readonly GridPoint2 SouthWest = West;
+    public static readonly GridPoint2 SouthEast = new GridPoint2(1, -1);
+    public static readonly GridPoint2 SouthWest = new GridPoint2(-1, 0);
 }

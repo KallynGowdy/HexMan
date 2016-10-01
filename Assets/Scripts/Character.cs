@@ -69,6 +69,10 @@ public class Character : MonoBehaviour
         var nextGridPosition = CurrentGridPosition.Add(CurrentAttemptedDirection);
         if (CheckValidMovePos(nextGridPosition))
         {
+            if (NextGridPosition != CurrentGridPosition)
+            {
+                Debug.Log(string.Format("Current: {0}, Next: {1}", CurrentGridPosition, NextGridPosition));
+            }
             NextGridPosition = nextGridPosition;
         }
     }
