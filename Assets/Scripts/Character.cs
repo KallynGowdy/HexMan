@@ -29,14 +29,32 @@ public class Character : MonoBehaviour
     void Update()
     {
         UpdateNextGridPosition();
+        Move();
+        UpdateCurrentGridPosition();
+    }
+
+    private void UpdateCurrentGridPosition()
+    {
+        CurrentGridPosition = FindCurrentGridPosition();
+    }
+
+    private void Move()
+    {
         var nextWorldPos = FindNextWorldPosition();
         Vector3 dir = GetNextMovementDirection(nextWorldPos);
-        Debug.Log(dir);
+        UpdatePosition(dir);
+        UpdateRotation(dir);
+    }
+
+    private void UpdateRotation(Vector3 dir)
+    {
         if (NotTooClose(dir))
         {
-            UpdatePosition(dir);
+            dir = dir.normalized;
+            var angleRad = Mathf.Atan2(dir.y, dir.x);
+            var angle = angleRad * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
         }
-        CurrentGridPosition = FindCurrentGridPosition();
     }
 
     private void UpdateNextGridPosition()
@@ -50,12 +68,15 @@ public class Character : MonoBehaviour
 
     private void UpdatePosition(Vector3 dir)
     {
-        transform.position += dir.normalized * Speed * Time.deltaTime;
+        if (NotTooClose(dir))
+        {
+            transform.position += dir.normalized * Speed * Time.deltaTime;
+        }
     }
 
     private static bool NotTooClose(Vector3 dir)
     {
-        return Mathf.Abs(dir.sqrMagnitude) > 0.01;
+        return Mathf.Abs(dir.magnitude) > 0.1;
     }
 
     private Vector2 GetNextMovementDirection(Vector3 nextWorldPos)
