@@ -78,4 +78,4 @@ MonoBehaviour:
     height: 77
   inputNodes:
   - {fileID: 114000010828333968}
-  scaleFactor: {x: 1, y: 1, z: 1}
+  scaleFactor: {x: 0.99, y: 0.99, z: 1}
