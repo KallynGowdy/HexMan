@@ -6,24 +6,31 @@ using GridPoint2 = Gamelogic.Grids2.GridPoint2;
 
 public class Character : MonoBehaviour
 {
-    public GridPoint2 CurrentGridPosition;
-    public GridPoint2 NextGridPosition;
-    public GridPoint2 CurrentAttemptedDirection;
+    public GridPoint2 CurrentGridPosition { get; set; }
+    public GridPoint2 NextGridPosition { get; set; }
+    public GridPoint2 CurrentAttemptedDirection { get; set; }
     public float Speed = 1;
 
     private HexGrid grid;
+    private Transform trans;
 
     void Start()
     {
         grid = FindObjectOfType<HexGrid>();
+        trans = transform;
         CurrentGridPosition = FindCurrentGridPosition();
         NextGridPosition = CurrentGridPosition;
-        Debug.Log(CurrentGridPosition);
+        SnapToCurrentGridPosition();
+    }
+
+    public void SnapToCurrentGridPosition()
+    {
+        trans.position = grid.GridMap.GridToWorld(CurrentGridPosition);
     }
 
     private GridPoint2 FindCurrentGridPosition()
     {
-        return grid.GridMap.WorldToGridToDiscrete(transform.position);
+        return grid.GridMap.WorldToGridToDiscrete(trans.position);
     }
 
     void Update()
@@ -53,7 +60,7 @@ public class Character : MonoBehaviour
             dir = dir.normalized;
             var angleRad = Mathf.Atan2(dir.y, dir.x);
             var angle = angleRad * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
+            trans.eulerAngles = new Vector3(trans.eulerAngles.x, trans.eulerAngles.y, angle);
         }
     }
 
@@ -70,18 +77,22 @@ public class Character : MonoBehaviour
     {
         if (NotTooClose(dir))
         {
-            transform.position += dir.normalized * Speed * Time.deltaTime;
+            trans.position += dir.normalized * Speed * Time.deltaTime;
+        }
+        else
+        {
+            SnapToCurrentGridPosition();
         }
     }
 
     private static bool NotTooClose(Vector3 dir)
     {
-        return Mathf.Abs(dir.magnitude) > 0.1;
+        return Mathf.Abs(dir.magnitude) > 0.05;
     }
 
     private Vector2 GetNextMovementDirection(Vector3 nextWorldPos)
     {
-        return (Vector2)(nextWorldPos - transform.position);
+        return (Vector2)(nextWorldPos - trans.position);
     }
 
     private Vector3 FindNextWorldPosition()
