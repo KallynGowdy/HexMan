@@ -8,8 +8,7 @@ public class Player : MonoBehaviour
 
     public Character Character;
     public Animator Animator;
-
-    public float SuperLength = 5;
+    
     public int Score = 0;
 
     void Start()
@@ -39,13 +38,8 @@ public class Player : MonoBehaviour
         return Animator.GetFloat(SuperTimeLeft);
     }
 
-    private void SetSuperTimeLeft(float timeLeft)
+    public void SetSuperTimeLeft(float timeLeft)
     {
         Animator.SetFloat(SuperTimeLeft, timeLeft);
-    }
-
-    public void BecomeSupered()
-    {
-        SetSuperTimeLeft(SuperLength);
     }
 }
