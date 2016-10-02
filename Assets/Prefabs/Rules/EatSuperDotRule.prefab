@@ -54,7 +54,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Condition: {fileID: 114000013489303964}
-  Action: {fileID: 114000013480774688}
+  Actions:
+  - {fileID: 114000013480774688}
 --- !u!114 &114000013480774688
 MonoBehaviour:
   m_ObjectHideFlags: 1
