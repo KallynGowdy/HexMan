@@ -3,6 +3,12 @@ using System.Collections;
 
 public class RuleData
 {
-    public Player Player;
+
+    public Player Player
+    {
+        get { return Character.GetComponent<Player>(); }
+    }
+
+    public Character Character;
     public GameObject Collider;
 }

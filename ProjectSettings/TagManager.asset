@@ -8,6 +8,7 @@ TagManager:
   - player
   - super-dot
   - rule
+  - teleport
   layers:
   - Default
   - TransparentFX

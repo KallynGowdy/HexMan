@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public List<GameRule> Rules = new List<GameRule>();
 
-    public void ApplyTrigger(Player player, GameObject collider)
+    public void ApplyTrigger(Character player, GameObject collider)
     {
         var data = new RuleData()
         {
-            Player = player,
+            Character = player,
             Collider = collider
         };
         foreach (var rule in Rules)

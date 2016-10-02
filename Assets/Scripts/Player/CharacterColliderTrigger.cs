@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerColliderTrigger : MonoBehaviour
+public class CharacterColliderTrigger : MonoBehaviour
 {
-    public Player Player;
+    public Character Character;
     public GameManager GameManager;
 
     void Start()
@@ -13,6 +13,6 @@ public class PlayerColliderTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        GameManager.ApplyTrigger(Player, other.gameObject);
+        GameManager.ApplyTrigger(Character, other.gameObject);
     }
 }
