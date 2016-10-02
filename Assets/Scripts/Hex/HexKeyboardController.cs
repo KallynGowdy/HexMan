@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterKeyboardInputHandler : MonoBehaviour
+public class HexKeyboardController : MonoBehaviour
 {
     public Character Character;
 
@@ -14,31 +14,31 @@ public class CharacterKeyboardInputHandler : MonoBehaviour
     {
         if (ShouldMoveNorthEast())
         {
-            Character.MoveNorthEast();
+            MoveNorthEast();
         }
         else if (ShouldMoveNorth())
         {
-            Character.MoveNorth();
+            MoveNorth();
         }
         else if (ShouldMoveNorthWest())
         {
-            Character.MoveNorthWest();
+            MoveNorthWest();
         }
         else if (ShouldMoveSouthWest())
         {
-            Character.MoveSouthWest();
+            MoveSouthWest();
         }
         else if (ShouldMoveSouth())
         {
-            Character.MoveSouth();
+            MoveSouth();
         }
         else if (ShouldMoveSouthEast())
         {
-            Character.MoveSouthEast();
+            MoveSouthEast();
         }
         else if (ShouldMoveSouthWest())
         {
-            Character.MoveSouthWest();
+            MoveSouthWest();
         }
     }
 
@@ -70,5 +70,35 @@ public class CharacterKeyboardInputHandler : MonoBehaviour
     private static bool ShouldMoveSouth()
     {
         return Input.GetKey(KeyCode.S);
+    }
+
+    public void MoveNorthEast()
+    {
+        Character.SetDirection(HexGrid.NorthEast);
+    }
+
+    public void MoveNorthWest()
+    {
+        Character.SetDirection(HexGrid.NorthWest);
+    }
+
+    public void MoveNorth()
+    {
+        Character.SetDirection(HexGrid.North);
+    }
+
+    public void MoveSouthEast()
+    {
+        Character.SetDirection(HexGrid.SouthEast);
+    }
+
+    public void MoveSouthWest()
+    {
+        Character.SetDirection(HexGrid.SouthWest);
+    }
+
+    public void MoveSouth()
+    {
+        Character.SetDirection(HexGrid.South);
     }
 }

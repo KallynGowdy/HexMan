@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerColliderTrigger : MonoBehaviour
 {
-    public HexPlayer Player;
+    public Player Player;
     public GameManager GameManager;
 
     void Start()
@@ -13,6 +13,6 @@ public class PlayerColliderTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        GameManager.SendPlayerCollision(Player, other);
+        GameManager.ApplyTrigger(Player, other.gameObject);
     }
 }

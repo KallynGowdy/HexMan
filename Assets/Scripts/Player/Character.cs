@@ -90,37 +90,7 @@ public class Character : SnapToGridOnStart
         return Grid.Grid[nextGridPosition] == null;
     }
 
-    public void MoveNorthEast()
-    {
-        SetDirection(HexGrid.NorthEast);
-    }
-
-    public void MoveNorthWest()
-    {
-        SetDirection(HexGrid.NorthWest);
-    }
-
-    public void MoveNorth()
-    {
-        SetDirection(HexGrid.North);
-    }
-
-    public void MoveSouthEast()
-    {
-        SetDirection(HexGrid.SouthEast);
-    }
-
-    public void MoveSouthWest()
-    {
-        SetDirection(HexGrid.SouthWest);
-    }
-
-    public void MoveSouth()
-    {
-        SetDirection(HexGrid.South);
-    }
-
-    private void SetDirection(GridPoint2 nextDirection)
+    public void SetDirection(GridPoint2 nextDirection)
     {
         CurrentAttemptedDirection = nextDirection;
     }
@@ -129,5 +99,4 @@ public class Character : SnapToGridOnStart
     {
         return GridPositionIsOpen(nextGridPosition);
     }
-
 }

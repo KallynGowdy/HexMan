@@ -1,29 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public void EatDot(HexPlayer player, Collider2D dot)
-    {
-        if (dot.CompareTag("dot"))
-        {
-            player.Score += 10;
-            DestroyObject(dot.gameObject);
-        }
-    }
+    public List<GameRule> Rules = new List<GameRule>();
 
-    public void EatSuperDot(HexPlayer player, Collider2D dot)
+    public void ApplyTrigger(Player player, GameObject collider)
     {
-        if (dot.CompareTag("super-dot"))
+        var data = new RuleData()
         {
-            player.BecomeSupered();
-            DestroyObject(dot.gameObject);
+            Player = player,
+            Collider = collider
+        };
+        foreach (var rule in Rules)
+        {
+            rule.Apply(data);
         }
-    }
-
-    public void SendPlayerCollision(HexPlayer player, Collider2D other)
-    {
-        EatDot(player, other);
-        EatSuperDot(player, other);
     }
 }

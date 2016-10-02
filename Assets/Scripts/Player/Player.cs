@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Character))]
-public class HexPlayer : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public const string SuperTimeLeft = "SuperTimeLeft";
 
