@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 using Gamelogic.Grids2;
 using Gamelogic.Grids2.Graph;
 using GridPoint2 = Gamelogic.Grids2.GridPoint2;
@@ -10,6 +11,11 @@ public class Character : SnapToGridOnStart
     public GridPoint2 NextGridPosition { get; set; }
     public GridPoint2 CurrentAttemptedDirection { get; set; }
     public float Speed = 1;
+
+    /// <summary>
+    /// The list of tiles that the character can walk on.
+    /// </summary>
+    public string[] AllowedTileTags = new string[0];
 
     protected override void Start()
     {
@@ -85,11 +91,6 @@ public class Character : SnapToGridOnStart
         return Grid.GridMap.GridToWorld(NextGridPosition);
     }
 
-    private bool GridPositionIsOpen(GridPoint2 nextGridPosition)
-    {
-        return Grid.Grid[nextGridPosition] == null;
-    }
-
     public void SetDirection(GridPoint2 nextDirection)
     {
         CurrentAttemptedDirection = nextDirection;
@@ -97,6 +98,7 @@ public class Character : SnapToGridOnStart
 
     public bool CheckValidMovePos(GridPoint2 nextGridPosition)
     {
-        return GridPositionIsOpen(nextGridPosition);
+        var nextTile = Grid.Grid[nextGridPosition];
+        return nextTile == null || AllowedTileTags.Any(t => nextTile.CompareTag(t));
     }
 }

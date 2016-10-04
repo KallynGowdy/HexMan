@@ -8,13 +8,22 @@ public class SnapToGridOnStart : MonoBehaviour
     protected HexGrid Grid;
     protected Transform Trans;
 
+    /// <summary>
+    /// Whether the tile should be added to the grid on start.
+    /// </summary>
+    public bool PlaceInGrid = false;
+
     // Use this for initialization
     protected virtual void Start()
     {
-        Grid = FindObjectOfType<HexGrid>();
+        Grid = Grid ?? FindObjectOfType<HexGrid>();
         Trans = transform;
         var pos = FindCurrentGridPosition();
         SnapToGridPosition(pos);
+        if (PlaceInGrid && Grid.Grid[pos] == null)
+        {
+            Grid.Grid[pos] = GetComponent<TileCell>();
+        }
     }
 
     protected GridPoint2 FindCurrentGridPosition()

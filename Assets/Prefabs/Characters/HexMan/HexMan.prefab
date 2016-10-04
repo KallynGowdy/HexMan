@@ -183,7 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grid: {fileID: 0}
+  PlaceInGrid: 0
   Speed: 2
+  AllowedTileTags: []
 --- !u!212 &212000012165177338
 SpriteRenderer:
   m_ObjectHideFlags: 1

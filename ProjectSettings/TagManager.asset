@@ -9,6 +9,7 @@ TagManager:
   - super-dot
   - rule
   - teleport
+  - shield
   layers:
   - Default
   - TransparentFX
