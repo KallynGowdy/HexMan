@@ -26,20 +26,12 @@ public class Character : SnapToGridOnStart
 
     void Update()
     {
-        UpdateNextGridPosition();
         Move();
-        UpdateCurrentGridPosition();
     }
-
-    private void UpdateCurrentGridPosition()
-    {
-        CurrentGridPosition = FindCurrentGridPosition();
-    }
-
+    
     private void Move()
     {
-        var nextWorldPos = FindNextWorldPosition();
-        Vector3 dir = GetNextMovementDirection(nextWorldPos);
+        Vector3 dir = Grid.GridMap.GridToWorld(CurrentAttemptedDirection); //GetNextMovementDirection(nextWorldPos);
         UpdatePosition(dir);
         UpdateRotation(dir);
     }
@@ -52,15 +44,6 @@ public class Character : SnapToGridOnStart
             var angleRad = Mathf.Atan2(dir.y, dir.x);
             var angle = angleRad * Mathf.Rad2Deg;
             Trans.eulerAngles = new Vector3(Trans.eulerAngles.x, Trans.eulerAngles.y, angle);
-        }
-    }
-
-    private void UpdateNextGridPosition()
-    {
-        var nextGridPosition = CurrentGridPosition.Add(CurrentAttemptedDirection);
-        if (CheckValidMovePos(nextGridPosition))
-        {
-            NextGridPosition = nextGridPosition;
         }
     }
 
@@ -81,11 +64,6 @@ public class Character : SnapToGridOnStart
         return Mathf.Abs(dir.magnitude) > 0.05;
     }
 
-    private Vector2 GetNextMovementDirection(Vector3 nextWorldPos)
-    {
-        return (Vector2)(nextWorldPos - Trans.position);
-    }
-
     private Vector3 FindNextWorldPosition()
     {
         return Grid.GridMap.GridToWorld(NextGridPosition);
@@ -94,11 +72,5 @@ public class Character : SnapToGridOnStart
     public void SetDirection(GridPoint2 nextDirection)
     {
         CurrentAttemptedDirection = nextDirection;
-    }
-
-    public bool CheckValidMovePos(GridPoint2 nextGridPosition)
-    {
-        var nextTile = Grid.Grid[nextGridPosition];
-        return nextTile == null || AllowedTileTags.Any(t => nextTile.CompareTag(t));
     }
 }
