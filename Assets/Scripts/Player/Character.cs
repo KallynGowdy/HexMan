@@ -10,12 +10,15 @@ public class Character : SnapToGridOnStart
     public GridPoint2 CurrentGridPosition { get; set; }
     public GridPoint2 NextGridPosition { get; set; }
     public GridPoint2 CurrentAttemptedDirection { get; set; }
+    public GridPoint2 CurrentDirection { get; set; }
     public float Speed = 1;
 
     /// <summary>
     /// The list of tiles that the character can walk on.
     /// </summary>
     public string[] AllowedTileTags = new string[0];
+
+    private bool keepDirectionForFrame;
 
     protected override void Start()
     {
@@ -28,12 +31,18 @@ public class Character : SnapToGridOnStart
     {
         Move();
     }
-    
+
     private void Move()
     {
-        Vector3 dir = Grid.GridMap.GridToWorld(CurrentAttemptedDirection); //GetNextMovementDirection(nextWorldPos);
+        if (!keepDirectionForFrame)
+        {
+            CurrentDirection = CurrentAttemptedDirection;
+        }
+        Vector3 dir = Grid.GridMap.GridToWorld(CurrentDirection);
         UpdatePosition(dir);
         UpdateRotation(dir);
+
+        keepDirectionForFrame = false;
     }
 
     private void UpdateRotation(Vector3 dir)
@@ -72,5 +81,10 @@ public class Character : SnapToGridOnStart
     public void SetDirection(GridPoint2 nextDirection)
     {
         CurrentAttemptedDirection = nextDirection;
+    }
+
+    public void RequestKeepDirectionForFrame()
+    {
+        keepDirectionForFrame = true;
     }
 }

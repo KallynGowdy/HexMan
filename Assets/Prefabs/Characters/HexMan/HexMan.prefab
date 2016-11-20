@@ -42,6 +42,7 @@ GameObject:
   - 114: {fileID: 114000013558210530}
   - 50: {fileID: 50000010208177184}
   - 114: {fileID: 114000011883854584}
+  - 114: {fileID: 114000013990746544}
   m_Layer: 0
   m_Name: HexMan
   m_TagString: player
@@ -186,6 +187,17 @@ MonoBehaviour:
   PlaceInGrid: 0
   Speed: 2
   AllowedTileTags: []
+--- !u!114 &114000013990746544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236968732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19c3fe3aefe949469d84f5499b45c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000012165177338
 SpriteRenderer:
   m_ObjectHideFlags: 1
