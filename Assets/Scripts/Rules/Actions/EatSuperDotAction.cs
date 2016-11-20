@@ -6,11 +6,11 @@ using System.Collections;
 /// </summary>
 public class EatSuperDotAction : RuleAction
 {
-    public float SuperTime = 5f;
 
     public override void Apply(RuleData data)
     {
-        data.Player.SetSuperTimeLeft(SuperTime);
+        var superTime = data.Collider.GetComponent<SuperDot>().Timeout;
+        data.Player.SetSuperTimeLeft(superTime);
         DestroyObject(data.Collider);
         data.Collider = null;
     }

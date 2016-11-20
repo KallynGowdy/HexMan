@@ -147,6 +147,7 @@ MonoBehaviour:
   Actions:
   - {fileID: 114000013480774688}
   - {fileID: 114000013007773748}
+  - {fileID: 0}
 --- !u!114 &114000013007773748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49240ebef7f13f44c9b9ea391ac5f2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SuperTime: 5
 --- !u!114 &114000013489303964
 MonoBehaviour:
   m_ObjectHideFlags: 1
