@@ -6,11 +6,10 @@ using System.Collections;
 /// </summary>
 public class EatDotAction : RuleAction
 {
-    public override void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
         var value = data.Collider.GetComponent<Dot>().Value;
         data.Player.Score += value;
-        DestroyObject(data.Collider);
-        data.Collider = null;
+        return true;
     }
 }

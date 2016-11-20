@@ -6,19 +6,12 @@ using System.Linq;
 /// <summary>
 /// Defines a component that represents a rule in the game.
 /// </summary>
-public sealed class GameRule : MonoBehaviour
+public sealed class GameRule : RuleAction
 {
-    public RuleCondition[] Conditions = null;
     public RuleAction[] Actions = new RuleAction[0];
 
-    public void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
-        if (Conditions.All(c => c.Matches(data)))
-        {
-            foreach (var action in Actions)
-            {
-                action.Apply(data);
-            }
-        }
+        return Actions.All(a => a.Apply(data));
     }
 }

@@ -18,7 +18,7 @@ public class TeleportAction : RuleAction
         Grid = Grid ?? FindObjectOfType<HexGrid>();
     }
 
-    public override void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
         if (!applied)
         {
@@ -33,6 +33,7 @@ public class TeleportAction : RuleAction
             applied = true;
         }
         attempted = true;
+        return true;
     }
 
     void Update()

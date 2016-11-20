@@ -19,12 +19,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010168977794}
-  - 114: {fileID: 114000012490415534}
-  - 114: {fileID: 114000010065891896}
-  - 114: {fileID: 114000013051543010}
-  - 114: {fileID: 114000011635207476}
+  - 114: {fileID: 114000013726306648}
   - 114: {fileID: 114000010561934236}
   - 82: {fileID: 82000013205382630}
+  - 114: {fileID: 114000011040450538}
+  - 114: {fileID: 114000010509611350}
   m_Layer: 0
   m_Name: EatDotRule
   m_TagString: rule
@@ -38,7 +37,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011018541550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,7 +118,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114000010065891896
+--- !u!114 &114000010509611350
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -127,9 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011018541550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619ed9581c41e2e478ccf932063b6703, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e04b9effa3099944954c43d6846b14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tag: dot
 --- !u!114 &114000010561934236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 82000013205382630}
---- !u!114 &114000011635207476
+--- !u!114 &114000011040450538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cac172fbf0260c46a8b68e7326277e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000012490415534
+--- !u!114 &114000013726306648
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -165,21 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Conditions:
-  - {fileID: 114000010065891896}
-  - {fileID: 114000013051543010}
+  - {fileID: 114000010509611350}
   Actions:
-  - {fileID: 114000011635207476}
+  - {fileID: 114000011040450538}
   - {fileID: 114000010561934236}
-  - {fileID: 0}
---- !u!114 &114000013051543010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011018541550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e04b9effa3099944954c43d6846b14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tag: dot

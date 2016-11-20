@@ -10,5 +10,6 @@ public abstract class RuleAction : MonoBehaviour
     /// Applies the action of the rule.
     /// </summary>
     /// <param name="data"></param>
-    public abstract void Apply(RuleData data);
+    /// <returns>Whether the action was successfully applied.</returns>
+    public abstract bool Apply(RuleData data);
 }

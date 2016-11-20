@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameRule> Rules = new List<GameRule>();
+    public RuleAction RootRule;
 
     public void ApplyTrigger(Character player, GameObject collider)
     {
@@ -13,9 +13,6 @@ public class GameManager : MonoBehaviour
             Character = player,
             Collider = collider
         };
-        foreach (var rule in Rules)
-        {
-            rule.Apply(data);
-        }
+        RootRule.Apply(data);
     }
 }

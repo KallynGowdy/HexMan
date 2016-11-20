@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
 
-public class CheckWinAction : RuleAction
+public class DestroyDotAction : DestroyObjectAction
 {
     private int dotsLeft;
 
@@ -12,16 +11,14 @@ public class CheckWinAction : RuleAction
         dotsLeft = FindObjectsOfType<Dot>().Length;
     }
 
-    public override void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
+        base.Apply(data);
         dotsLeft--;
-    }
-
-    void Update()
-    {
         if (dotsLeft <= 0)
         {
-            Debug.Log("Win!");
+            data.DidWin = true;
         }
+        return true;
     }
 }

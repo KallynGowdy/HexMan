@@ -11,10 +11,11 @@ public class LoadLevelAction : RuleAction
     public GameObject World;
     public GameObject LoadingScreen;
 
-    public override void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
         DestroyObject(World);
         Instantiate(LoadingScreen);
         SceneManager.LoadSceneAsync(SceneName);
+        return true;
     }
 }

@@ -13,8 +13,9 @@ public class SoundAction : RuleAction
         Source = Source ?? GetComponent<AudioSource>();
     }
 
-    public override void Apply(RuleData data)
+    public override bool Apply(RuleData data)
     {
         Source.Play();
+        return true;
     }
 }
