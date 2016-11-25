@@ -3510,6 +3510,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013494562580, guid: 938dd75cef1f1f74dbf64345c79b60b2,
     type: 2}
   m_PrefabInternal: {fileID: 562315169}
+--- !u!114 &562315171 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013936370804, guid: 938dd75cef1f1f74dbf64345c79b60b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 562315169}
+  m_Script: {fileID: 11500000, guid: 32c6238226c8a0949a77ebc22d52361e, type: 3}
 --- !u!1001 &572390247
 Prefab:
   m_ObjectHideFlags: 0
@@ -7452,6 +7458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RootRule: {fileID: 620622321}
+  CurrentCharacter: {fileID: 562315171}
 --- !u!4 &1256477255
 Transform:
   m_ObjectHideFlags: 0
