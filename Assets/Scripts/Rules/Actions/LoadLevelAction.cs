@@ -38,7 +38,7 @@ public class LoadLevelAction : RuleAction
 
     void Update()
     {
-        if (loadingScene && op.isDone)
+        if (loadingScene && op != null && op.isDone)
         {
             newScene = SceneManager.GetSceneByName(SceneName);
             SceneManager.MoveGameObjectToScene(currentPlayer.gameObject, newScene);
