@@ -21,9 +21,9 @@ GameObject:
   - 4: {fileID: 4000013683993384}
   - 212: {fileID: 212000010822172576}
   - 114: {fileID: 114000011543903290}
-  - 58: {fileID: 58000012125804740}
   - 114: {fileID: 114000013879888970}
-  m_Layer: 0
+  - 60: {fileID: 60000011022726484}
+  m_Layer: 9
   m_Name: ShieldWall
   m_TagString: shield
   m_Icon: {fileID: 0}
@@ -37,14 +37,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013821336218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 0.51, z: 0}
+  m_LocalPosition: {x: -0.84, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &58000012125804740
-CircleCollider2D:
+--- !u!60 &60000011022726484
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,11 +52,17 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  m_Points:
+    m_Paths:
+    - - {x: 0.5710898, y: 0.0024695396}
+      - {x: 0.2862252, y: 0.50357676}
+      - {x: -0.29310888, y: 0.5011853}
+      - {x: -0.57214624, y: 0.0024083853}
+      - {x: -0.28541142, y: -0.49710524}
+      - {x: 0.29276973, y: -0.49219966}
 --- !u!114 &114000011543903290
 MonoBehaviour:
   m_ObjectHideFlags: 1
